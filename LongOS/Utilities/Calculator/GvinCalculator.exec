@@ -1,0 +1,9 @@
+local function run()
+	local application = Classes.Application.Application('Calculator');
+	shell.run(application:GetWorkingDirectory()..'CalculatorWindow.lua');
+
+	local calculatorWindow = CalculatorWindow(application);
+	application:Run(calculatorWindow);
+end
+
+System:Try(run);

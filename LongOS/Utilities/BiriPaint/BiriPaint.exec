@@ -1,0 +1,25 @@
+local tArgs = { ... };
+
+local function getLauncherString(_table)
+	local launcherString = '';
+	for key, v in pairs(_table) do
+		launcherString = launcherString.._table[key]..' ';
+	end
+	if (launcherString == '') then
+		return nil;
+	end
+	return launcherString;
+end
+
+local launcherString = getLauncherString(tArgs);
+
+local function run()
+	local application = Classes.Application.Application('BiriPaint', false, true);
+	shell.run(application:GetWorkingDirectory()..'BiriPaintImageSizeDialog.lua');
+	shell.run(application:GetWorkingDirectory()..'BiriPaintWindow.lua');
+	
+	local biriPaintWindow = BiriPaintWindow(application, launcherString);
+	application:Run(biriPaintWindow);
+end
+
+System:Try(run);

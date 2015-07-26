@@ -1,0 +1,24 @@
+local tArgs = { ... };
+
+local function getLauncherString(_table)
+	local launcherString = '';
+	for key, v in pairs(_table) do
+		launcherString = launcherString.._table[key]..' ';
+	end
+	if (launcherString == '') then
+		return nil;
+	end
+	return launcherString;
+end
+
+local launcherString = getLauncherString(tArgs);
+
+local function run()
+	local application = Classes.Application.Application('LuaIDE', false, true);
+	shell.run(application:GetWorkingDirectory()..'LuaIDEWindow.lua');
+	
+	local LuaIDEWindow = LuaIDEWindow(application, launcherString);
+	application:Run(LuaIDEWindow);
+end
+
+System:Try(run);

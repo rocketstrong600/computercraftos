@@ -1,0 +1,9 @@
+local function run()
+	local application = Classes.Application.Application('File manager', false, true);
+	shell.run(application:GetWorkingDirectory()..'FileManagerWindow.lua');
+
+	local fileManagerWindow = FileManagerWindow(application);
+	application:Run(fileManagerWindow);
+end
+
+System:Try(run);

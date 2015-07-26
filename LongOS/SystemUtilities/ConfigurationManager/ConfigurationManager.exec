@@ -1,0 +1,15 @@
+local function run()
+	local application = Classes.Application.Application('Configuration Manager', true, true);
+	shell.run(application:GetWorkingDirectory()..'ColorConfigurationWindow.lua');
+	shell.run(application:GetWorkingDirectory()..'MouseConfigurationWindow.lua');
+	shell.run(application:GetWorkingDirectory()..'InterfaceConfigurationWindow.lua');
+	shell.run(application:GetWorkingDirectory()..'ApplicationConfigurationEditWindow.lua');
+	shell.run(application:GetWorkingDirectory()..'ApplicationsConfigurationWindow.lua');
+	shell.run(application:GetWorkingDirectory()..'ConfigurationManagerWindow.lua');
+	
+	
+	local configurationManagerWindow = ConfigurationManagerWindow(application);
+	application:Run(configurationManagerWindow);
+end
+
+System:Try(run);
